@@ -1,6 +1,6 @@
 defmodule Auction do
   alias Auction.{Item}
-  #@repo FakeRepo
+  # @repo FakeRepo
   @repo Auction.Repo
   def list_items do
     @repo.all(Item)
@@ -18,5 +18,7 @@ defmodule Auction do
     Auction.Item
     |> struct(attrs)
     |> @repo.insert()
-    end
+  end
+
+  def delete_item(%Auction.Item{} = item), do: @repo.delete(item)
 end
